@@ -23,10 +23,5 @@ $ pip install -r requirements.txt
 
 # Run
 ```bash
-$ flask init-db
-$ export FLASK_APP=app
-$ export FLASK_ENV=development
-$ flask run
+python main.py
 ```
-
-Visit http://127.0.0.1:5000/
