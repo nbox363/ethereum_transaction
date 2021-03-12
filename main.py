@@ -9,7 +9,7 @@ url_get_last_block = 'https://api.etherscan.io/api?module=proxy&action=eth_block
 url_block_detail_info = 'https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag={num}&boolean=true'
 
 last_block_number = int(requests.get(url_get_last_block).json()['result'], 16)
-first_block_number = last_block_number - 3
+first_block_number = last_block_number - 100
 
 transactions_info = {}
 
@@ -20,7 +20,7 @@ def get_transactions_info():
     for block_number in range(first_block_number, last_block_number):
         res = requests.get(url_block_detail_info.format(num=hex(block_number)))
 
-        transactions = res.json()['result']['transactions']  # list of 100 or more transactions(dict)
+        transactions = res.json()['result']['transactions']
 
         for transaction in transactions:
             try:
