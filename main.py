@@ -3,6 +3,7 @@ import time
 
 import requests
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 url_get_last_block = 'https://api.etherscan.io/api?module=proxy&action=eth_blockNumber'
@@ -28,7 +29,7 @@ def get_transactions_info():
                 to = int(transaction['to'], 16)
                 val = abs(int(transaction['value'], 16))
             except TypeError:
-                logging.debug(f"cannot process transaction {transaction}, in block number {hex(block_number)}")
+                logging.warning(f"cannot process transaction {transaction}, in block number {hex(block_number)}")
                 continue
 
             try:
